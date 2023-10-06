@@ -1,0 +1,1 @@
+export type VERIFICATION_METHOD = "OTP" | "EMAIL";
