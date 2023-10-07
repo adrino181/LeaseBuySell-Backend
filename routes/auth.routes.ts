@@ -37,7 +37,9 @@ router.post("/verifyOtp", async (req, res) => {
     if (!otp || typeof otp !== "string" || otp.length !== 6) {
       throw new Error("OTP missing");
     }
-    const data = await UserDao.verifyOtp(loginToken, otp);
+    const token = loginToken.split(" ")[1];
+    console.log("this is the data coming");
+    const data = await UserDao.verifyOtp(token, otp);
     res.status(200).json({ message: "SUCCESS", data });
   } catch (e: any) {
     res.status(500).json({

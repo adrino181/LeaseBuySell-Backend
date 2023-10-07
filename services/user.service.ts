@@ -42,7 +42,7 @@ export default class UserDao {
     const otp_expiration = new Date();
     const otp_code = randHex();
     const phone_number = `${user.phone_extension}${user.phone}`;
-    //const sendOtp = await this.sendPhoneMsg(otp_code, phone_number);
+    const sendOtp = await this.sendPhoneMsg(otp_code, phone_number);
     try {
       const updatedUser = await User.findOneAndUpdate(
         { _id: user.id },
@@ -141,7 +141,7 @@ export default class UserDao {
     );
 
     return {
-      data: data,
+      profile: data,
       token: generatedToken,
     };
   }
